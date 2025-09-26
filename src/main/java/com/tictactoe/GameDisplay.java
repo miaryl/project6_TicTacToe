@@ -82,8 +82,11 @@ public final class GameDisplay {
      * @param winner símbolo del jugador ganador
      */
     public static void showWinner(final char winner) {
+        final String TEXT_BG_GREEN = "\u001B[42m";
+        final String TEXT_RESET    = "\u001B[0m";
+
         System.out.println(SEPARATOR);
-        System.out.println("¡Felicidades! El jugador " + winner + " ha ganado!");
+        System.out.println("\n" + TEXT_BG_GREEN + "¡Felicidades! El jugador " + winner + " ha ganado!" + TEXT_RESET + "\n");
         System.out.println(SEPARATOR);
     }
     
