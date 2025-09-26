@@ -10,7 +10,7 @@ public final class GameDisplay {
     private static final String SEPARATOR = "===============================";
     
     /** Línea divisoria del tablero */
-    private static final String BOARD_DIVIDER = TEXT_YELLOW +  "  -----" + TEXT_RESET;
+    private static final String BOARD_DIVIDER = TEXT_YELLOW +  "\t  -----" + TEXT_RESET;
     
     /**
      * Constructor privado para prevenir instanciación.
@@ -36,10 +36,10 @@ public final class GameDisplay {
      * @param board tablero a mostrar
      */
     public static void showBoard(final GameBoard board) {
-        System.out.println("\n  0 1 2");
+        System.out.println("\n \t  0 1 2");
         
         for (int i = 0; i < GameBoard.SIZE; i++) {
-            System.out.print(i + " ");
+            System.out.print("\t" + i + " ");
             for (int j = 0; j < GameBoard.SIZE; j++) {
                 final char cell = board.getCell(i, j);
                 if (cell == GameBoard.EMPTY) {
@@ -95,9 +95,8 @@ public final class GameDisplay {
         final String TEXT_RESET    = "\u001B[0m";
 
         System.out.println(SEPARATOR);
-        System.out.println("\n" + TEXT_BG_GREEN + "🎉 ¡Felicidades! El " + 
-                          Player.getPlayerName(winner) + " (" + Player.getColoredPlayer(winner) + 
-                          ") ha ganado!" + TEXT_RESET + "\n");
+        System.out.println("\n" + TEXT_BG_GREEN + "¡Felicidades! El " + 
+                          Player.getPlayerName(winner) + " (" + Player.getColoredPlayer(winner) + TEXT_BG_GREEN + ") ha ganado!" + TEXT_RESET + "\n");
         System.out.println(SEPARATOR);
     }
     
@@ -119,7 +118,7 @@ public final class GameDisplay {
      * Muestra el mensaje de despedida.
      */
     public static void showGoodbye() {
-        System.out.println("\n ¡Gracias por jugar!");
+        System.out.println("\n¡Gracias por jugar!");
         System.out.println("¡Hasta la próxima! ");
     }
     
