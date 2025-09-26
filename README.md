@@ -5,6 +5,16 @@ The first to align three symbols in a row, column, or diagonal wins.
 If the board fills with no winner, the game ends in a **draw**.
 
 
+## Screen shot
+
+
+<img width="342" height="270" alt="Screenshot 2025-09-26 160726" src="https://github.com/user-attachments/assets/ef89ba95-dbe6-4dca-ac4c-f13338d13eef" />
+
+<img width="298" height="245" alt="Screenshot 2025-09-26 195027" src="https://github.com/user-attachments/assets/537ea2a0-b3f1-4b1e-bd21-bc9fd5a359af" />
+<img width="371" height="238" alt="Screenshot 2025-09-26 194859" src="https://github.com/user-attachments/assets/fd5009ae-f0a0-4e79-a555-d1906c22002d" />
+<img width="373" height="119" alt="Screenshot 2025-09-26 194829" src="https://github.com/user-attachments/assets/e42e0737-8349-456e-9398-7bd9f768c7da" />
+
+
 ## :alien: How To Play
 1. **Clone this repository**  
  ```bash
