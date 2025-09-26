@@ -65,10 +65,14 @@ public final class GameDisplay {
      * @param board tablero actual
      */
     public static void showInvalidMoveMessage(final int row, final int col, final GameBoard board) {
+        final String TEXT_BG_RED    = "\u001B[41m";
+        final String TEXT_RESET  = "\u001B[0m";
+
+
         if (!board.isValidPosition(row, col)) {
-            System.out.println("Posición inválida! Usa un número entre el 0 y el 2.");
+            System.out.println( "\n" + TEXT_BG_RED +  "Posición inválida! Usa un número entre el 0 y el 2." + TEXT_RESET + "\n");
         } else if (!board.isEmpty(row, col)) {
-            System.out.println("Esa celda ya está ocupada! Prueba con otra.");
+            System.out.println( "\n" + TEXT_BG_RED + "Esa celda ya está ocupada! Prueba con otra." + TEXT_RESET  + "\n");
         }
     }
     
