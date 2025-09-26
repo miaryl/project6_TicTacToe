@@ -1,6 +1,8 @@
 package com.tictactoe;
 
 public final class GameDisplay {
+    public static final String TEXT_YELLOW = "\u001B[33m";
+    public static final String TEXT_RESET  = "\u001B[0m";
     
     private static final String WELCOME_MSG = "¡Bienvenido al Tres en Raya!";
     
@@ -8,7 +10,7 @@ public final class GameDisplay {
     private static final String SEPARATOR = "===============================";
     
     /** Línea divisoria del tablero */
-    private static final String BOARD_DIVIDER = "  -----";
+    private static final String BOARD_DIVIDER = TEXT_YELLOW +  "  -----" + TEXT_RESET;
     
     /**
      * Constructor privado para prevenir instanciación.
@@ -103,12 +105,12 @@ public final class GameDisplay {
      * Muestra el mensaje de empate.
      */
     public static void showTie() {
-        final String TEXT_BG_YELLOW = "\u001B[43m";
+        final String TEXT_BRIGHT_BG_BLUE   = "\u001B[104m";
         final String TEXT_BLACK = "\u001B[30m";
         final String TEXT_RESET = "\u001B[0m";
         
         System.out.println(SEPARATOR);
-        System.out.println("\n" + TEXT_BG_YELLOW + TEXT_BLACK + 
+        System.out.println("\n" + TEXT_BRIGHT_BG_BLUE + TEXT_BLACK + 
                           " ¡Es un empate! El tablero está lleno. " + TEXT_RESET + "\n");
         System.out.println(SEPARATOR);
     }
@@ -118,7 +120,7 @@ public final class GameDisplay {
      */
     public static void showGoodbye() {
         System.out.println("\n ¡Gracias por jugar!");
-        System.out.println("¡Hasta la próxima! 🎮");
+        System.out.println("¡Hasta la próxima! ");
     }
     
     /**
