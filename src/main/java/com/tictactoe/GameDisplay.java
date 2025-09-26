@@ -23,6 +23,8 @@ public final class GameDisplay {
      */
     public static void showWelcome() {
         System.out.println(WELCOME_MSG);
+        System.out.println("La " + Player.getColoredPlayer(Player.PLAYER_X) + " será morada y la " + 
+                          Player.getColoredPlayer(Player.PLAYER_O) + " será azul");
         System.out.println(SEPARATOR);
     }
     
@@ -37,7 +39,13 @@ public final class GameDisplay {
         for (int i = 0; i < GameBoard.SIZE; i++) {
             System.out.print(i + " ");
             for (int j = 0; j < GameBoard.SIZE; j++) {
-                System.out.print(board.getCell(i, j) + " ");
+                final char cell = board.getCell(i, j);
+                if (cell == GameBoard.EMPTY) {
+                    System.out.print(cell + " ");
+                } else {
+                    // Mostrar el símbolo con color
+                    System.out.print(Player.getColoredPlayer(cell) + " ");
+                }
             }
             System.out.println();
             
@@ -54,7 +62,7 @@ public final class GameDisplay {
      * @param player jugador actual
      */
     public static void showPlayerTurn(final char player) {
-        System.out.println("Turno de " + player);
+        System.out.println("\nTurno del " + Player.getColoredPlayerName(player));
     }
     
     /**
@@ -68,11 +76,10 @@ public final class GameDisplay {
         final String TEXT_BG_RED    = "\u001B[41m";
         final String TEXT_RESET  = "\u001B[0m";
 
-
         if (!board.isValidPosition(row, col)) {
-            System.out.println( "\n" + TEXT_BG_RED +  "Posición inválida! Usa un número entre el 0 y el 2." + TEXT_RESET + "\n");
+            System.out.println( "\n" + TEXT_BG_RED +  " Posición inválida! Usa un número entre el 0 y el 2." + TEXT_RESET + "\n");
         } else if (!board.isEmpty(row, col)) {
-            System.out.println( "\n" + TEXT_BG_RED + "Esa celda ya está ocupada! Prueba con otra." + TEXT_RESET  + "\n");
+            System.out.println( "\n" + TEXT_BG_RED + " Esa celda ya está ocupada! Prueba con otra." + TEXT_RESET  + "\n");
         }
     }
     
@@ -86,7 +93,9 @@ public final class GameDisplay {
         final String TEXT_RESET    = "\u001B[0m";
 
         System.out.println(SEPARATOR);
-        System.out.println("\n" + TEXT_BG_GREEN + "¡Felicidades! El jugador " + winner + " ha ganado!" + TEXT_RESET + "\n");
+        System.out.println("\n" + TEXT_BG_GREEN + "🎉 ¡Felicidades! El " + 
+                          Player.getPlayerName(winner) + " (" + Player.getColoredPlayer(winner) + 
+                          ") ha ganado!" + TEXT_RESET + "\n");
         System.out.println(SEPARATOR);
     }
     
@@ -94,8 +103,13 @@ public final class GameDisplay {
      * Muestra el mensaje de empate.
      */
     public static void showTie() {
+        final String TEXT_BG_YELLOW = "\u001B[43m";
+        final String TEXT_BLACK = "\u001B[30m";
+        final String TEXT_RESET = "\u001B[0m";
+        
         System.out.println(SEPARATOR);
-        System.out.println("¡Es un empate! El tablero está lleno.");
+        System.out.println("\n" + TEXT_BG_YELLOW + TEXT_BLACK + 
+                          " ¡Es un empate! El tablero está lleno. " + TEXT_RESET + "\n");
         System.out.println(SEPARATOR);
     }
     
@@ -103,18 +117,20 @@ public final class GameDisplay {
      * Muestra el mensaje de despedida.
      */
     public static void showGoodbye() {
-        System.out.println("¡Gracias por jugar!");
-        System.out.println("Hasta la próxima!");
+        System.out.println("\n ¡Gracias por jugar!");
+        System.out.println("¡Hasta la próxima! 🎮");
     }
     
     /**
      * Muestra las instrucciones del juego.
      */
     public static void showInstructions() {
-        System.out.println("\nInstrucciones:");
+        System.out.println("\n Instrucciones:");
         System.out.println("- El tablero usa coordenadas de 0 a 2");
         System.out.println("- Introduce primero la fila, luego la columna");
         System.out.println("- El objetivo es conseguir tres símbolos en línea");
-        System.out.println("- Puede ser horizontal, vertical o diagonal\n");
+        System.out.println("- Puede ser horizontal, vertical o diagonal");
+        System.out.println("- La " + Player.getColoredPlayer(Player.PLAYER_X) + " es morada y la " + 
+                          Player.getColoredPlayer(Player.PLAYER_O) + " es azul\n");
     }
 }

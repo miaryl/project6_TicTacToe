@@ -1,6 +1,6 @@
 package com.tictactoe;
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 
 public final class TicTacToe {
     
@@ -57,15 +57,21 @@ public final class TicTacToe {
                                         final char currentPlayer) {
         GameDisplay.showPlayerTurn(currentPlayer);
         
-        System.out.print("Introduce la fila (0-2): ");
-        final int row = scanner.nextInt();
-        System.out.print("Introduce la columna (0-2): ");
-        final int col = scanner.nextInt();
-        
-        if (GameLogic.makeMove(board, row, col, currentPlayer)) {
-            return true;
-        } else {
-            GameDisplay.showInvalidMoveMessage(row, col, board);
+        try {
+            System.out.print("Introduce la fila (0-2): ");
+            final int row = scanner.nextInt();
+            System.out.print("Introduce la columna (0-2): ");
+            final int col = scanner.nextInt();
+            
+            if (GameLogic.makeMove(board, row, col, currentPlayer)) {
+                return true;
+            } else {
+                GameDisplay.showInvalidMoveMessage(row, col, board);
+                return false;
+            }
+        } catch (final InputMismatchException e) {
+            System.out.println("\n Error: Por favor introduce solo números enteros.");
+            scanner.nextLine(); // Limpiar el buffer del scanner
             return false;
         }
     }
