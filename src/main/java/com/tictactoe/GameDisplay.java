@@ -6,23 +6,18 @@ public final class GameDisplay {
     
     private static final String WELCOME_MSG = "¡Bienvenido al Tres en Raya!";
     
-    /** Separador visual */
+    
     private static final String SEPARATOR = "===============================";
     
-    /** Línea divisoria del tablero */
+    
     private static final String BOARD_DIVIDER = TEXT_YELLOW +  "\t  -----" + TEXT_RESET;
     
-    /**
-     * Constructor privado para prevenir instanciación.
-     * Esta es una clase utilitaria con solo métodos estáticos.
-     */
+    
     private GameDisplay() {
         throw new UnsupportedOperationException("Clase utilitaria - no debe ser instanciada");
     }
     
-    /**
-     * Muestra el mensaje de bienvenida.
-     */
+   
     public static void showWelcome() {
         System.out.println(WELCOME_MSG);
         System.out.println("La " + Player.getColoredPlayer(Player.PLAYER_X) + " será morada y la " + 
@@ -32,8 +27,7 @@ public final class GameDisplay {
     
     /**
      * Muestra el tablero de juego.
-     * 
-     * @param board tablero a mostrar
+     * @param board
      */
     public static void showBoard(final GameBoard board) {
         System.out.println("\n \t  0 1 2");
@@ -45,7 +39,6 @@ public final class GameDisplay {
                 if (cell == GameBoard.EMPTY) {
                     System.out.print(cell + " ");
                 } else {
-                    // Mostrar el símbolo con color
                     System.out.print(Player.getColoredPlayer(cell) + " ");
                 }
             }
@@ -60,8 +53,7 @@ public final class GameDisplay {
     
     /**
      * Muestra de quién es el turno.
-     * 
-     * @param player jugador actual
+     * @param player
      */
     public static void showPlayerTurn(final char player) {
         System.out.println("\nTurno del " + Player.getColoredPlayerName(player));
@@ -70,9 +62,9 @@ public final class GameDisplay {
     /**
      * Muestra mensaje de movimiento inválido.
      * 
-     * @param row fila intentada
-     * @param col columna intentada
-     * @param board tablero actual
+     * @param row 
+     * @param col 
+     * @param board 
      */
     public static void showInvalidMoveMessage(final int row, final int col, final GameBoard board) {
         final String TEXT_BG_RED    = "\u001B[41m";
@@ -88,7 +80,7 @@ public final class GameDisplay {
     /**
      * Muestra el mensaje de ganador.
      * 
-     * @param winner símbolo del jugador ganador
+     * @param winner 
      */
     public static void showWinner(final char winner) {
         final String TEXT_BG_GREEN = "\u001B[42m";
@@ -100,9 +92,6 @@ public final class GameDisplay {
         System.out.println(SEPARATOR);
     }
     
-    /**
-     * Muestra el mensaje de empate.
-     */
     public static void showTie() {
         final String TEXT_BRIGHT_BG_BLUE   = "\u001B[104m";
         final String TEXT_BLACK = "\u001B[30m";
@@ -114,17 +103,13 @@ public final class GameDisplay {
         System.out.println(SEPARATOR);
     }
     
-    /**
-     * Muestra el mensaje de despedida.
-     */
+ 
     public static void showGoodbye() {
         System.out.println("\n¡Gracias por jugar!");
         System.out.println("¡Hasta la próxima! ");
     }
     
-    /**
-     * Muestra las instrucciones del juego.
-     */
+
     public static void showInstructions() {
         System.out.println("\n Instrucciones:");
         System.out.println("- El tablero usa coordenadas de 0 a 2");

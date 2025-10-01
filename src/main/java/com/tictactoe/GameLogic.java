@@ -2,10 +2,7 @@ package com.tictactoe;
 
 public final class GameLogic {
     
-    /**
-     * Constructor privado para prevenir instanciación.
-     * Esta es una clase utilitaria con solo métodos estáticos.
-     */
+    
     private GameLogic() {
         throw new UnsupportedOperationException("Clase utilitaria - no debe ser instanciada");
     }
@@ -13,11 +10,11 @@ public final class GameLogic {
     /**
      * Realiza un movimiento en el tablero.
      * 
-     * @param board tablero del juego
-     * @param row fila donde colocar
-     * @param col columna donde colocar
-     * @param player jugador que hace el movimiento
-     * @return true si el movimiento fue válido, false si no
+     * @param board 
+     * @param row 
+     * @param col 
+     * @param player 
+     * @return 
      */
     public static boolean makeMove(final GameBoard board, final int row, final int col, final char player) {
         if (!Player.isValidPlayer(player)) {
@@ -29,8 +26,8 @@ public final class GameLogic {
     /**
      * Comprueba si hay un ganador en el tablero.
      * 
-     * @param board tablero del juego
-     * @return true si hay ganador, false si no
+     * @param board 
+     * @return 
      */
     public static boolean checkWinner(final GameBoard board) {
         return checkRows(board) || checkColumns(board) || checkDiagonals(board);
@@ -39,8 +36,8 @@ public final class GameLogic {
     /**
      * Comprueba si las filas tienen tres símbolos iguales.
      * 
-     * @param board tablero del juego
-     * @return true si hay una fila ganadora, false si no
+     * @param board 
+     * @return 
      */
     private static boolean checkRows(final GameBoard board) {
         for (int i = 0; i < GameBoard.SIZE; i++) {
@@ -57,8 +54,8 @@ public final class GameLogic {
     /**
      * Comprueba si las columnas tienen tres símbolos iguales.
      * 
-     * @param board tablero del juego
-     * @return true si hay una columna ganadora, false si no
+     * @param board 
+     * @return 
      */
     private static boolean checkColumns(final GameBoard board) {
         for (int j = 0; j < GameBoard.SIZE; j++) {
@@ -75,18 +72,15 @@ public final class GameLogic {
     /**
      * Comprueba si las diagonales tienen tres símbolos iguales.
      * 
-     * @param board tablero del juego
-     * @return true si hay una diagonal ganadora, false si no
+     * @param board 
+     * @return 
      */
     private static boolean checkDiagonals(final GameBoard board) {
-        // Diagonal principal
         final char center = board.getCell(1, 1);
         if (center != GameBoard.EMPTY) {
-            // Diagonal principal (0,0) -> (1,1) -> (2,2)
             if (center == board.getCell(0, 0) && center == board.getCell(2, 2)) {
                 return true;
             }
-            // Diagonal secundaria (0,2) -> (1,1) -> (2,0)
             if (center == board.getCell(0, 2) && center == board.getCell(2, 0)) {
                 return true;
             }
@@ -97,8 +91,8 @@ public final class GameLogic {
     /**
      * Comprueba si el tablero está lleno (empate).
      * 
-     * @param board tablero del juego
-     * @return true si está lleno, false si no
+     * @param board 
+     * @return 
      */
     public static boolean isBoardFull(final GameBoard board) {
         return board.isFull();
